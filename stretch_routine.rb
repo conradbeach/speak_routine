@@ -1,33 +1,22 @@
 require_relative './stretch'
 require_relative './announce'
 
-STRETCHES = [
-  { name: "Calf Stretch Right" },
-  { name: "Calf Stretch Left" },
-  { name: "Quad Stretch Right" },
-  { name: "Quad Stretch Left" },
-  { name: "Sitting Butterfly" },
-  { name: "Sitting Reach Toes Right" },
-  { name: "Sitting Reach Toes Left" },
-  { name: "Standing Reach Toes" },
-  { name: "Cat’s Backs" },
-  { name: "Lying Down, Pull Knee to Shoulder Right" },
-  { name: "Lying Down, Pull Knee to Shoulder Left" },
-  { name: "Upper Spinal Floor Twist Right", duration: 45 },
-  { name: "Upper Spinal Floor Twist Left", duration: 45 },
-  { name: "Dive Bombers" },
-  { name: "Straddle", duration: 20 },
-  { name: "Standing Stretch Side to Side" },
-  { name: "Standing Lean Forward and Back" },
-  { name: "Standing Torso Twist" },
-  { name: "Tricep Stretch Right", duration: 15 },
-  { name: "Tricep Stretch Left", duration: 15 },
-  { name: "Shoulder Stretch Right", duration: 15 },
-  { name: "Shoulder Stretch Left", duration: 15 },
-  { name: "Turn Head to Left and Right", duration: 20 },
-  { name: "Drop Chin, Lean Head Back", duration: 20 },
-  { name: "Lift Hands Over Head, Look Up" },
-].map { |stretch_data| Stretch.new(stretch_data) }
+# Expected file format:
+# [stretch name]
+# [stretch name]; [duration]
+#
+# Example:
+# Some Stretch
+# Another, Kind of Stretch; 15
+#
+# (If no duration is given, the default duration will be used.)
+STRETCHES = File.readlines('./stretches.txt').map do |line|
+  line_parts = line.chomp.split(";").map(&:strip)
+
+  { name: line_parts[0], duration: line_parts[1]&.to_i }
+end.map do |stretch_data|
+  Stretch.new(stretch_data)
+end
 
 def announce_routine_duration(selected_stretches)
   routine_duration = selected_stretches.sum(&:duration_with_say)
