@@ -33,7 +33,7 @@ def run_routine
 
   selected_stretches.each { |stretch| run_stretch(stretch) }
 
-  Announce.announce("Routine Complete", "----------Routine Complete----------")
+  Announce.announce_completion
 end
 
 run_routine

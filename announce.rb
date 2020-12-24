@@ -27,6 +27,10 @@ module Announce
     end
   end
 
+  def self.announce_completion
+   announce("Routine Complete", "----------Routine Complete----------")
+  end
+
   private_class_method def self.say(message)
     `say -v Samantha “#{message}”`
   end
