@@ -7,6 +7,10 @@ module StretchLoader
     end
   end
 
+  def self.user_selected_stretches
+    @user_selected_stretches ||= all_stretches[starting_stretch_index..-1]
+  end
+
   # Expected file format:
   # [stretch name]
   # [stretch name]; [duration]
@@ -22,5 +26,13 @@ module StretchLoader
 
       { name: line_parts[0], duration: line_parts[1]&.to_i }
     end
+  end
+
+  private_class_method def self.starting_stretch_index
+    all_stretches.each.with_index do |stretch, index|
+      return index if stretch.name.downcase == ARGV[0]&.downcase
+    end
+
+    return 0
   end
 end

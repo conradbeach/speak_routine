@@ -12,14 +12,6 @@ def announce_routine_duration(selected_stretches)
   Announce.padded_announce(spoken_duration)
 end
 
-def starting_stretch_index
-  StretchLoader.all_stretches.each.with_index do |stretch, index|
-    return index if stretch.name.downcase == ARGV[0]&.downcase
-  end
-
-  return 0
-end
-
 def run_stretch(stretch)
   Announce.announce(stretch.name)
   sleep(stretch.duration - Announce::COUNTDOWN_SECONDS)
@@ -27,11 +19,11 @@ def run_stretch(stretch)
 end
 
 def run_routine
-  selected_stretches = StretchLoader.all_stretches[starting_stretch_index..-1]
+  announce_routine_duration(StretchLoader.user_selected_stretches)
 
-  announce_routine_duration(selected_stretches)
-
-  selected_stretches.each { |stretch| run_stretch(stretch) }
+  StretchLoader.user_selected_stretches.each do |stretch|
+    run_stretch(stretch)
+  end
 
   Announce.announce_completion
 end
