@@ -1,4 +1,5 @@
-DEFAULT_DURATION = 30
+require_relative './stretch'
+
 COUNTDOWN_SECONDS = 3
 ESTIMATED_CHARACTER_SAY_DURATION = 0.08827821676187081
 
@@ -28,7 +29,7 @@ STRETCHES = [
   { name: "Turn Head to Left and Right", duration: 20 },
   { name: "Drop Chin, Lean Head Back", duration: 20 },
   { name: "Lift Hands Over Head, Look Up" },
-]
+].map { |stretch_data| Stretch.new(stretch_data) }
 
 def say(message)
   `say -v Samantha “#{message}”`
@@ -41,7 +42,7 @@ end
 
 def announce_routine_duration(selected_stretches)
   routine_duration = selected_stretches.sum(0) do |stretch|
-    (stretch[:name].size * ESTIMATED_CHARACTER_SAY_DURATION) + (stretch[:duration] || DEFAULT_DURATION)
+    (stretch.name.size * ESTIMATED_CHARACTER_SAY_DURATION) + stretch.duration
   end
 
   minutes = (routine_duration / 60).floor
@@ -72,17 +73,15 @@ end
 
 def starting_stretch_index
   STRETCHES.each.with_index do |stretch, index|
-    return index if stretch[:name].downcase == ARGV[0]&.downcase
+    return index if stretch.name.downcase == ARGV[0]&.downcase
   end
 
   return 0
 end
 
 def run_stretch(stretch)
-  duration = stretch[:duration] || DEFAULT_DURATION
-
-  announce_stretch(stretch[:name])
-  sleep(duration - COUNTDOWN_SECONDS)
+  announce_stretch(stretch.name)
+  sleep(stretch.duration - COUNTDOWN_SECONDS)
   ending_countdown
 end
 
