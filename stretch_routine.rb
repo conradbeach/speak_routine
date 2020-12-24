@@ -38,7 +38,7 @@ def announce_routine_duration(selected_stretches)
 
   spoken_duration = "This routine will take about #{minutes} minutes and #{seconds} seconds"
 
-  Announce.announce(spoken_duration)
+  Announce.padded_announce(spoken_duration)
 end
 
 def starting_stretch_index
