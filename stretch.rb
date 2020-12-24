@@ -1,6 +1,7 @@
+require_relative './announce'
+
 class Stretch
   DEFAULT_DURATION = 30
-  ESTIMATED_CHARACTER_SAY_DURATION = 0.08827821676187081
 
   attr_reader :name
 
@@ -14,6 +15,6 @@ class Stretch
   end
 
   def duration_with_say
-    duration + (name.size * ESTIMATED_CHARACTER_SAY_DURATION)
+    duration + Announce.say_duration(name)
   end
 end

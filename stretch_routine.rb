@@ -1,4 +1,5 @@
 require_relative './stretch'
+require_relative './announce'
 
 COUNTDOWN_SECONDS = 3
 
@@ -30,13 +31,9 @@ STRETCHES = [
   { name: "Lift Hands Over Head, Look Up" },
 ].map { |stretch_data| Stretch.new(stretch_data) }
 
-def say(message)
-  `say -v Samantha “#{message}”`
-end
-
 def announce_stretch(name)
   puts name
-  say(name)
+  Announce.say(name)
 end
 
 def announce_routine_duration(selected_stretches)
@@ -48,12 +45,12 @@ def announce_routine_duration(selected_stretches)
   spoken_duration = "This routine will take about #{minutes} minutes and #{seconds} seconds"
 
   puts("#{spoken_duration}\n\n")
-  say(spoken_duration)
+  Announce.say(spoken_duration)
 end
 
 def announce_completion
   puts "------------Routine Complete------------"
-  say("Routine Complete")
+  Announce.say("Routine Complete")
 end
 
 def bell
