@@ -41,7 +41,7 @@ end
 
 def announce_routine_duration(selected_stretches)
   routine_duration = selected_stretches.sum(0) do |stretch|
-    (stretch[:duration] || DEFAULT_DURATION) + (stretch[:name].size * AVERAGE_CHARACTER_ANNOUNCE_DURATION)
+    (stretch[:name].size * AVERAGE_CHARACTER_ANNOUNCE_DURATION) + (stretch[:duration] || DEFAULT_DURATION)
   end
 
   minutes = (routine_duration / 60).floor
