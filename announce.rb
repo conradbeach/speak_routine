@@ -19,6 +19,14 @@ module Announce
     message.size * ESTIMATED_CHARACTER_SAY_DURATION
   end
 
+  def self.announce_routine_duration(routine_duration)
+    minutes = (routine_duration / 60).floor
+    seconds = (routine_duration % 60).round
+    spoken_duration = "This routine will take about #{minutes} minutes and #{seconds} seconds"
+
+    padded_announce(spoken_duration)
+  end
+
   def self.ending_countdown
     COUNTDOWN_SECONDS.times do
       puts "."
