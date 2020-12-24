@@ -40,7 +40,7 @@ module Announce
   end
 
   private_class_method def self.say(message)
-    `say -v Samantha “#{message}”`
+    `say -v Samantha "#{message}"`
   end
 
   private_class_method def self.bell
