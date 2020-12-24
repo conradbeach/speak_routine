@@ -1,7 +1,6 @@
 require_relative './stretch'
 
 COUNTDOWN_SECONDS = 3
-ESTIMATED_CHARACTER_SAY_DURATION = 0.08827821676187081
 
 STRETCHES = [
   { name: "Calf Stretch Right" },
@@ -41,9 +40,7 @@ def announce_stretch(name)
 end
 
 def announce_routine_duration(selected_stretches)
-  routine_duration = selected_stretches.sum(0) do |stretch|
-    (stretch.name.size * ESTIMATED_CHARACTER_SAY_DURATION) + stretch.duration
-  end
+  routine_duration = selected_stretches.sum(&:duration_with_say)
 
   minutes = (routine_duration / 60).floor
   seconds = (routine_duration % 60).round
