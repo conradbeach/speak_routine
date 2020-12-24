@@ -1,7 +1,6 @@
 require_relative './stretch'
 require_relative './announce'
 
-COUNTDOWN_SECONDS = 3
 
 STRETCHES = [
   { name: "Calf Stretch Right" },
@@ -31,11 +30,6 @@ STRETCHES = [
   { name: "Lift Hands Over Head, Look Up" },
 ].map { |stretch_data| Stretch.new(stretch_data) }
 
-def announce_stretch(name)
-  puts name
-  Announce.say(name)
-end
-
 def announce_routine_duration(selected_stretches)
   routine_duration = selected_stretches.sum(&:duration_with_say)
 
@@ -44,25 +38,7 @@ def announce_routine_duration(selected_stretches)
 
   spoken_duration = "This routine will take about #{minutes} minutes and #{seconds} seconds"
 
-  puts("#{spoken_duration}\n\n")
-  Announce.say(spoken_duration)
-end
-
-def announce_completion
-  puts "------------Routine Complete------------"
-  Announce.say("Routine Complete")
-end
-
-def bell
-  puts 7.chr
-end
-
-def ending_countdown
-  COUNTDOWN_SECONDS.times do
-    puts "."
-    bell
-    sleep(1)
-  end
+  Announce.announce(spoken_duration)
 end
 
 def starting_stretch_index
@@ -74,9 +50,9 @@ def starting_stretch_index
 end
 
 def run_stretch(stretch)
-  announce_stretch(stretch.name)
-  sleep(stretch.duration - COUNTDOWN_SECONDS)
-  ending_countdown
+  Announce.announce(stretch.name)
+  sleep(stretch.duration - Announce::COUNTDOWN_SECONDS)
+  Announce.ending_countdown
 end
 
 def run_routine
@@ -86,7 +62,7 @@ def run_routine
 
   selected_stretches.each { |stretch| run_stretch(stretch) }
 
-  announce_completion
+  Announce.announce("Routine Complete", "----------Routine Complete----------")
 end
 
 run_routine
