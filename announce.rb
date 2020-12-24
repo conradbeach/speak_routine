@@ -15,10 +15,6 @@ module Announce
     announce(say_message, padded_text_message)
   end
 
-  def self.say(message)
-    `say -v Samantha “#{message}”`
-  end
-
   def self.say_duration(message)
     message.size * ESTIMATED_CHARACTER_SAY_DURATION
   end
@@ -31,7 +27,11 @@ module Announce
     end
   end
 
-  def self.bell
+  private_class_method def self.say(message)
+    `say -v Samantha “#{message}”`
+  end
+
+  private_class_method def self.bell
     puts 7.chr
   end
 end
