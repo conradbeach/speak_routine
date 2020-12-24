@@ -1,7 +1,6 @@
 require_relative './stretch'
 require_relative './announce'
 
-
 STRETCHES = [
   { name: "Calf Stretch Right" },
   { name: "Calf Stretch Left" },
