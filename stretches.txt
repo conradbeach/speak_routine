@@ -1,7 +1,7 @@
 Calf Stretch Right
 Calf Stretch Left
-Quad Stretch Right
-Quad Stretch Left
+Quad Stretch Right; 20
+Quad Stretch Left; 20
 Sitting Butterfly
 Sitting Reach Toes Right
 Sitting Reach Toes Left
@@ -12,7 +12,7 @@ Lying Down, Pull Knee to Shoulder Left
 Upper Spinal Floor Twist Right; 45
 Upper Spinal Floor Twist Left; 45
 Dive Bombers
-Straddle; 20
+Straddle
 Standing Stretch Side to Side
 Standing Lean Forward and Back
 Standing Torso Twist
