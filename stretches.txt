@@ -1,25 +1,25 @@
-Calf Stretch Right
-Calf Stretch Left
-Quad Stretch Right; 20
-Quad Stretch Left; 20
+Calf Stretch
+Switch Sides
+Quad Stretch; 20
+Switch Sides; 20
 Sitting Butterfly
-Sitting Reach Toes Right
-Sitting Reach Toes Left
+Sitting Reach One Foot
+Switch Sides
 Standing Reach Toes
 Cat's Backs
-Lying Down, Pull Knee to Shoulder Right
-Lying Down, Pull Knee to Shoulder Left
-Upper Spinal Floor Twist Right; 45
-Upper Spinal Floor Twist Left; 45
+Lying Down, Pull Knee to Shoulder
+Switch Sides
+Upper Spinal Floor Twist; 45
+Switch Sides; 45
 Dive Bombers
 Straddle
 Standing Stretch Side to Side
 Standing Lean Forward and Back
 Standing Torso Twist
-Tricep Stretch Right; 15
-Tricep Stretch Left; 15
-Shoulder Stretch Right; 15
-Shoulder Stretch Left; 15
+Tricep Stretch; 15
+Switch Sides; 15
+Shoulder Stretch; 15
+Switch Sides; 15
 Turn Head to Left and Right; 20
 Drop Chin, Lean Head Back; 20
 Lift Hands Over Head, Look Up
