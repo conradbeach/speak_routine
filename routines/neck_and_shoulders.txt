@@ -1,0 +1,13 @@
+Forward Shoulder Rolls; 10
+Backward Shoulder Rolls; 10
+Forward Shoulder Rolls; 10
+Backward Shoulder Rolls; 10
+Stork Walks; 20
+Rest; 5
+Stork Walks; 20
+Squat
+Forward Standing Arm Circles
+Backward Standing Arm Circles
+Static Extension; 60
+Standing Elbow Curls
+Standing Overhead Extension

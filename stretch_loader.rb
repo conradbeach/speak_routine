@@ -21,7 +21,7 @@ module StretchLoader
   #
   # (If no duration is given, the default duration will be used.)
   private_class_method def self.all_stretch_data
-    File.readlines('./stretches.txt').map do |line|
+    File.readlines("./routines/#{ARGV[0]}.txt").map do |line|
       line_parts = line.chomp.split(";").map(&:strip)
 
       { name: line_parts[0], duration: line_parts[1]&.to_i }
@@ -30,7 +30,7 @@ module StretchLoader
 
   private_class_method def self.starting_stretch_index
     all_stretches.each.with_index do |stretch, index|
-      return index if stretch.name.downcase == ARGV[0]&.downcase
+      return index if stretch.name.downcase == ARGV[1]&.downcase
     end
 
     return 0
