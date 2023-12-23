@@ -3,6 +3,7 @@ require './stretch'
 module StretchLoader
   def self.all_stretches
     @all_stretches ||= all_stretch_data.map do |stretch_data|
+      # warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
       Stretch.new(stretch_data)
     end
   end

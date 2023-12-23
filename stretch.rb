@@ -5,6 +5,7 @@ class Stretch
 
   attr_reader :name
 
+  # warning: The called method `initialize' is defined here
   def initialize(name:, duration: nil)
     @name = name
     @duration = duration
